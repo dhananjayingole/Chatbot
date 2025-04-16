@@ -1,5 +1,6 @@
 package eu.tutorials.chatbotapp
 
+import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.clickable
@@ -39,9 +40,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import eu.tutorials.chatbotapp.Notifications.createNotification
 import java.text.SimpleDateFormat
 import java.util.Date
-
 
 @Composable
 fun PdfListScreen(navController: NavHostController) {
@@ -159,7 +160,7 @@ fun PdfListScreen(navController: NavHostController) {
                 TextButton(
                     onClick = {
                         selectedPdfId?.let { id ->
-                            deletePdfDocument(db, id) { success ->
+                            deletePdfDocument(db, id, context) { success ->
                                 if (success) {
                                     pdfList.removeAll { it["documentId"] == id }
                                     Toast.makeText(context, "PDF deleted successfully", Toast.LENGTH_SHORT).show()
@@ -216,12 +217,14 @@ private fun fetchPdfDocuments(
 private fun deletePdfDocument(
     db: FirebaseFirestore,
     documentId: String,
+    context: Context,
     onComplete: (Boolean) -> Unit
 ) {
     db.collection("pdf_documents")
         .document(documentId)
         .delete()
         .addOnSuccessListener {
+            createNotification(context)
             onComplete(true)
         }
         .addOnFailureListener {

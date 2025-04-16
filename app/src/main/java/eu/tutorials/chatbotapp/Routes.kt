@@ -9,6 +9,8 @@ object Routes {
     const val CreateAdminProfile = "createadminprofile"
     const val StudentLoginScreen = "studentloginscreen"
     const val StudentSignupScreen = "studentsignupscreen"
+    const val ShowNotification = "shownotification"
+    const val CongratsLottieAnim = "congratsLottieAnim"
     const val SuperAdminDashboard = "superadmindashboard"
     const val SuperAdminLoginScreen = "superadminloginscreen"
     const val RoleSelectionScreen = "roleselectionscreen"

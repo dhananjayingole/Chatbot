@@ -12,8 +12,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         FirebaseApp.initializeApp(this)
         setContent {
-            val chatViewModel: ChatViewModel = viewModel()
             val navController = rememberNavController()
+            val chatViewModel: ChatViewModel = viewModel()
             NavGraph(navController = navController, viewModel = chatViewModel)
         }
     }

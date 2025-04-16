@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">चॅटबॉट अॅप</string>
+    <string name="choose_language">भाषा निवडा</string>
+    <string name="student">विद्यार्थी</string>
+    <string name="admin">प्रशासक</string>
+</resources>
